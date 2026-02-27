@@ -40,6 +40,10 @@ class IntListTest {
 	
 	@Test
 	void testRemoveLast() {
+		L.append(1);
+		L.append(2);
+		L.append(3);
+		
 		L.removeLast();
 		L.removeLast();
 		

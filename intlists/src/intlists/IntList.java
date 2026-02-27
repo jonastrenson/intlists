@@ -1,11 +1,12 @@
 package intlists;
 
+import java.util.Arrays;
 import java.util.stream.IntStream;
 
 /**
  * Elke instantie van de klasse slaat een reeks gehele getallen op.
  * 
- * @invar | getLength() <= 0
+ * @invar | getLength() >= 0
  * @invar | toIntArray() != null
  * @invar | toIntArray().length == getLength()
  * 
@@ -47,7 +48,7 @@ public class IntList {
 	 * 
 	 * @post | intArray.length == getLength()
 	 * @post | IntStream.range(0, getLength()).allMatch(i -> intArray[i] == intAt(i))
-	 * @post | toIntArray() == intArray
+	 * @post | Arrays.equals(toIntArray(), intArray)
 	 */
 	private IntList(int[] intArray) {
 		if (intArray == null)
@@ -67,7 +68,7 @@ public class IntList {
 	 * @post | IntStream.range(0, old(getLength())).allMatch(i -> intAt(i) == old(toIntArray().clone())[i])
 	 * 
 	 */
-	public IntList append(int newInt) {
+	public void append(int newInt) {
 		throw new RuntimeException("Not yet implmented");
 	}
 	
@@ -76,7 +77,7 @@ public class IntList {
 	 * @post | getLength() == old(getLength() + -1)
 	 * @post | IntStream.range(0, getLength()).allMatch(i -> intAt(i) == old(toIntArray().clone())[i])
 	 */
-	public IntList removeLast() {
+	public void removeLast() {
 		if (getLength() == 0)
 			throw new IllegalArgumentException("list is already empty");
 		throw new RuntimeException("Not yet implemented");
