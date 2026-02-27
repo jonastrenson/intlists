@@ -1,11 +1,12 @@
 package intlists;
 
+import java.util.Arrays;
 import java.util.stream.IntStream;
 
 /**
  * Elke instantie van de klasse slaat een reeks gehele getallen op.
  * 
- * @invar | getLength() <= 0
+ * @invar | getLength() >= 0
  * @invar | toIntArray() != null
  * @invar | toIntArray().length == getLength()
  * 
@@ -13,23 +14,27 @@ import java.util.stream.IntStream;
 public class IntList {
 	
 	/**
+	 * @invar | intA != null
+	 */
+	private int[] intA;
+	
+	/**
 	 * @post | result >= 0
 	 */
 	public int getLength() {
-		throw new RuntimeException("Not yet implemented");
+		return intA.length;
 	}
 	
 	/**
 	 * @throws IllegalArgumentException
 	 *  | 0 > index || index > getLength()
-	 * 
 	 */
 	public int intAt(int index) {
 		if (getLength() == 0)
-			throw new IllegalArgumentException("IntList is empty");
-		if (0 > index || index > getLength())
+			throw new IllegalArgumentException("`getLength()` is equal to zero");
+		if (0 > index || index >= getLength())
 			throw new IllegalArgumentException("`index` is not in range");
-		throw new RuntimeException("Not yet implemented");
+		return intA[index];
 	}
 	
 	/**
@@ -39,7 +44,7 @@ public class IntList {
 	 * @post | IntStream.range(0, getLength()).allMatch(i -> intAt(i) == result[i])
 	 */
 	public int[] toIntArray() {
-		throw new RuntimeException("Not yet implemented");
+		return intA.clone();
 	}
 	
 	/**
@@ -47,11 +52,12 @@ public class IntList {
 	 * 
 	 * @post | intArray.length == getLength()
 	 * @post | IntStream.range(0, getLength()).allMatch(i -> intArray[i] == intAt(i))
-	 * @post | toIntArray() == intArray
+	 * @post | Arrays.equals(toIntArray(), intArray)
 	 */
 	private IntList(int[] intArray) {
 		if (intArray == null)
 			throw new IllegalArgumentException("`intArray` is null");
+		this.intA = intArray.clone();
 	}
 	
 	/**
@@ -62,24 +68,31 @@ public class IntList {
 	}
 	
 	/**
+	 * @mutates | this
 	 * @post | getLength() == old(getLength() + 1)
 	 * @post | intAt(getLength() - 1) == newInt
 	 * @post | IntStream.range(0, old(getLength())).allMatch(i -> intAt(i) == old(toIntArray().clone())[i])
-	 * 
 	 */
-	public IntList append(int newInt) {
-		throw new RuntimeException("Not yet implmented");
+	public void append(int newInt) {
+		int[] result = new int[getLength()+1];
+		System.arraycopy(intA, 0, result, 0, getLength());
+		result[result.length-1] = newInt;
+		intA = result;
 	}
 	
 	/**
 	 * @throws IllegalArgumentException | getLength() == 0
+	 * @mutates | this
 	 * @post | getLength() == old(getLength() + -1)
 	 * @post | IntStream.range(0, getLength()).allMatch(i -> intAt(i) == old(toIntArray().clone())[i])
 	 */
-	public IntList removeLast() {
+	public void removeLast() {
 		if (getLength() == 0)
 			throw new IllegalArgumentException("list is already empty");
-		throw new RuntimeException("Not yet implemented");
+		int[] result = new int[getLength()-1];
+		System.arraycopy(intA, 0, result, 0, getLength()-1);
+		intA = result;
+
 	}
 
 }
