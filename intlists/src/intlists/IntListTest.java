@@ -27,6 +27,15 @@ class IntListTest {
 		assertEquals(L.intAt(2), 3);
 		assertEquals(L.getLength(), 3);
 		Arrays.equals(L.toIntArray(), new int[] {1,2,3});
+		
+		// Test op representation exposure
+		int getal = 9;
+		L.append(getal);
+		assertEquals(L.intAt(3), 9);
+		getal = 8;
+		assertEquals(L.intAt(3), 9);
+		
+		
 	}
 	
 	@Test

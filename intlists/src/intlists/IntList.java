@@ -79,6 +79,7 @@ public class IntList {
 	public IntList removeLast() {
 		if (getLength() == 0)
 			throw new IllegalArgumentException("list is already empty");
+		throw new RuntimeException("Not yet implemented");
 	}
 
 }
