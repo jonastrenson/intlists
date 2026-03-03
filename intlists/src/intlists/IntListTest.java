@@ -38,7 +38,6 @@ class IntListTest {
 		L.append(3);
 		
 		L.removeLast();
-		System.out.println(L.getLength());
 		L.removeLast();
 		
 		assertEquals(L.intAt(0), 1);
