@@ -13,7 +13,7 @@ class IntListTest {
 	@Test
 	void testConstructor() {
 		assertEquals(L.getLength(),0);
-		Arrays.equals(L.toIntArray(), new int[] {});
+		assertArrayEquals(L.toIntArray(), new int[] {});
 	}
 	
 	@Test
@@ -26,7 +26,7 @@ class IntListTest {
 		assertEquals(L.intAt(1), 2);
 		assertEquals(L.intAt(2), 3);
 		assertEquals(L.getLength(), 3);
-		Arrays.equals(L.toIntArray(), new int[] {1,2,3});
+		assertArrayEquals(L.toIntArray(), new int[] {1,2,3});
 		
 		// Test op representation exposure
 		int getal = 9;
@@ -49,7 +49,7 @@ class IntListTest {
 		
 		assertEquals(L.intAt(0), 1);
 		assertEquals(L.getLength(), 1);
-		Arrays.equals(L.toIntArray(), new int[] {1});
+		assertArrayEquals(L.toIntArray(), new int[] {1});
 	}
 
 }
