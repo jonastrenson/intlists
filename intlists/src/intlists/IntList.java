@@ -14,6 +14,7 @@ import java.util.stream.IntStream;
 public class IntList {
 	
 	/**
+	 * @representationObject
 	 * @invar | intA != null
 	 */
 	private int[] intA;
