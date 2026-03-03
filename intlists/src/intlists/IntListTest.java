@@ -28,12 +28,6 @@ class IntListTest {
 		assertEquals(L.getLength(), 3);
 		assertArrayEquals(L.toIntArray(), new int[] {1,2,3});
 		
-		// Test op representation exposure
-		L.append(10);
-		int[] myElementen = L.toIntArray();
-		myElementen[0] = 100;
-		assertEquals(10, L.intAt(0));
-		
 	}
 	
 	@Test
@@ -48,6 +42,16 @@ class IntListTest {
 		assertEquals(L.intAt(0), 1);
 		assertEquals(L.getLength(), 1);
 		assertArrayEquals(L.toIntArray(), new int[] {1});
+	}
+	
+	@Test
+	void testRepresentationExposure() {
+		// Test op representation exposure
+		L.append(10);
+		int[] myElementen = L.toIntArray();
+		myElementen[0] = 100;
+		assertEquals(10, L.intAt(0));
+				
 	}
 
 }
