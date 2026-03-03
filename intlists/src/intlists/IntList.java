@@ -23,7 +23,7 @@ public class IntList {
 	/**
 	 * @throws IllegalArgumentException
 	 *  | 0 > index || index > getLength()
-	 * 
+	 *  
 	 */
 	public int intAt(int index) {
 		if (getLength() == 0)
@@ -34,7 +34,7 @@ public class IntList {
 	}
 	
 	/**
-	 * 
+	 * @creates | result
 	 * @post | result != null
 	 * @post | result.length == getLength()
 	 * @post | IntStream.range(0, getLength()).allMatch(i -> intAt(i) == result[i])
@@ -63,6 +63,7 @@ public class IntList {
 	}
 	
 	/**
+	 * @mutates | this
 	 * @post | getLength() == old(getLength() + 1)
 	 * @post | intAt(getLength() - 1) == newInt
 	 * @post | IntStream.range(0, old(getLength())).allMatch(i -> intAt(i) == old(toIntArray().clone())[i])
@@ -74,6 +75,7 @@ public class IntList {
 	
 	/**
 	 * @throws IllegalArgumentException | getLength() == 0
+	 * @mutates | this
 	 * @post | getLength() == old(getLength() + -1)
 	 * @post | IntStream.range(0, getLength()).allMatch(i -> intAt(i) == old(toIntArray().clone())[i])
 	 */
