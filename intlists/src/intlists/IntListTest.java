@@ -29,12 +29,10 @@ class IntListTest {
 		assertArrayEquals(L.toIntArray(), new int[] {1,2,3});
 		
 		// Test op representation exposure
-		int getal = 9;
-		L.append(getal);
-		assertEquals(L.intAt(3), 9);
-		getal = 8;
-		assertEquals(L.intAt(3), 9);
-		
+		L.append(10);
+		int[] myElementen = L.toIntArray();
+		myElementen[0] = 100;
+		assertEquals(10, L.intAt(0));
 		
 	}
 	
